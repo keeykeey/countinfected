@@ -1,0 +1,57 @@
+<html lang='ja'>
+<header>
+  <meta charset='UTF-8'>
+  <title> 感染者数報告アプリ </title>
+  <link rel='stylesheet' href='index.css'></link>
+  <script src='auth.js' defer></script>
+  <script src='handle_display.js' defer></script>
+  <script src='send_report.js' defer></script>
+
+</header>
+<body>
+  <div class='col'>
+    <!--ヘッダー-->
+    <div class='header'>
+      <img class='menu' src='./icon/menu32.png'/>
+      感染者数報告</div><hr/>
+    <div class='row'>
+      <!--サイドバー-->
+      <div class='sidebar'>
+        <button class='switch_content' id='to_public_page'>最新情報</button><br/>
+        <button class='switch_content' id='to_admin_page'>管理者用</button>
+        <button class='switch_content' id='to_reporting_page'>業務担当者</button>
+        <button class='switch_content' id='to_login'>ログイン<img class='login_out_icon' src='./icon/login32.png'/></button>
+      </div>
+
+      <!--メインコンテンツ-->
+      <div class='contents'> <div class='contents_title'></div>
+        <!--一般向け公開ページ。感染者数表示 -->
+        <div class='public_page'>
+
+        </div>
+
+        <!--管理者用ページ、担当者の権限管理 -->
+　　　　　<div class='admin_page'>
+
+        </div>
+
+        <!--保健所担当者用ページ。感染者数報告 -->
+        <div class='reporting_page'>
+          <div class='input_form'><label>保健所</label>
+          <select class='health_center'>
+            <option value=''>----------</option>
+            <option value='A'>保健所A</option>
+            <option value='B'>保健所B</option>
+            <option value='C'>保健所C</option>
+            <option value='D'>保健所D</option>
+            <option value='E'>保健所E</option>
+          </select><div/>
+          <label >日付<input class='date' type='date'></input></label></br>
+          <label>感染者数</label><input class='number' type='number' min='0'></input></br>
+          <button class='sendBtn'>送信</button>
+        <div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

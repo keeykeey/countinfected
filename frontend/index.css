@@ -1,0 +1,105 @@
+/* 全体共通*/
+.col{
+  display:flex;
+  flex-direction:column;
+}
+
+.row{
+  display:flex;
+  flex-direction:row;
+}
+
+/*ヘッダー部分*/
+.header{
+  height:40px;
+  line-height: 50px;
+  width:100%;
+  font-size:30px;
+  text-align:left;
+  padding:0 0 0 0;
+  margin:0 0 0 0;
+}
+
+.menu{
+  height:24px;
+  cursor:pointer;
+}
+.menu.is_hiding{
+  display:none;
+}
+
+/*サイドバー部分*/
+.sidebar{
+  height:500px;
+  width:200px;
+  border-right-width:medium;
+  border-right-style:ridge;
+  background-color:#ffffff;
+  padding:0 2px 0 0;
+}
+.sidebar.is_hiding{
+  display:none;
+}
+
+.switch_content{
+  height:50px;
+  width:100%;
+  background-color:#ffffff;
+  border:none;
+  border-color:#303530;
+  cursor:pointer;
+}
+.switch_content:hover{
+  background-color:#dfdfdf;
+}
+
+.switch_content.is_hiding{
+  display:none;
+}
+
+.login_out_icon{
+  margin:0 3px 0 3px;
+  height:14px;
+  line-height:14px;
+}
+
+/*コンテンツ部分*/
+.contents{
+  width:100%;
+}
+
+/*一般向け公開ページ*/
+.public_page{
+
+}
+.public_page.is_hiding{
+  display:none;
+}
+
+/*管理者向けページ*/
+.admin_page{
+
+}
+.admin_page.is_hiding{
+  display:none;
+}
+
+/*保健所担当者向けページ*/
+.reporting_page{
+  height:500px;
+  width:100%;
+}
+.reporting_page.is_hiding{
+  display:none;
+}
+
+label{
+  margin:10px auto 10px 10%;
+}
+
+.sendBtn{
+  width:220px;
+  height:30px;
+  margin:5px auto 5px 10%;
+  cursor:pointer;
+}

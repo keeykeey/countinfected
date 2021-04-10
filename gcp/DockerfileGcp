@@ -1,0 +1,6 @@
+FROM gcr.io/google.com/cloudsdktool/cloud-sdk:alpine
+WORKDIR googleCloudSdk
+ENTRYPOINT ["sh","./entrypoint.sh"]
+
+#gcloud compute ssh --project=PROJECT_ID --zone=ZONE VM_NAME
+#gcloud compute ssh --project=countinfected --zone=asia-east1-a countinfected
