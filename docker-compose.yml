@@ -8,6 +8,27 @@ services:
     volumes:
       - ./gcp/volumes:/googleCloudSdk
 
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    ports:
+      - ${DB_PORT}
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+    volumes:
+      - ./backend/volumes:/dockerBackend
+      - staticfiles:/dockerBackend/staticfiles
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
   nginx:
     build:
       context: ./nginx
@@ -17,3 +38,9 @@ services:
     volumes:
       - ./frontend:/usr/share/nginx/html
       - ./nginx/conf:/etc/nginx/conf.d
+      - staticfiles:/staticfiles
+    depends_on:
+      - backend
+
+volumes:
+  staticfiles:

@@ -57,10 +57,16 @@
   display:none;
 }
 
-.login_out_icon{
+.login_in_icon{
   margin:0 3px 0 3px;
   height:14px;
   line-height:14px;
+}
+
+.login_out_icon{
+  margin:2px 2px 0 2px;
+  height:17px;
+  line-height:17px;
 }
 
 /*コンテンツ部分*/
