@@ -89,7 +89,7 @@ function drawMultSeries(
   public_page_element.appendChild(chart_element)
 
   var data = new google.visualization.arrayToDataTable([
-    ['day','infected'],
+    ['day','感染者数'],
     ['1',input_data[0]],
     ['2',input_data[1]],
     ['3',input_data[2]],
