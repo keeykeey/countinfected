@@ -32,7 +32,7 @@ const admin_page = document.querySelector('.admin_page');
 public_page.classList.toggle('is_hiding',false);
 reporting_page.classList.toggle('is_hiding',true);
 admin_page.classList.toggle('is_hiding',true);
-contents_element.innerHTML='最新動向';
+contents_element.innerHTML='表示年月を選択';
 
 //ウインドウサイズに応じてsidebar と　menuアイコン　の表示非表示切り替え
 window.addEventListener('resize',()=>{
@@ -44,7 +44,7 @@ to_public_pageBtn.addEventListener('click',()=>{
   public_page.classList.toggle('is_hiding',false)
   reporting_page.classList.toggle('is_hiding',true)
   admin_page.classList.toggle('is_hiding',true)
-  contents_element.innerHTML='最新動向'
+  contents_element.innerHTML='表示年月を選択'
 })
 
 to_reporting_pageBtn.addEventListener('click',()=>{
