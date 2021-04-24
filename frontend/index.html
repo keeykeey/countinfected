@@ -3,6 +3,7 @@
   <meta charset='UTF-8'>
   <title> 感染者数報告アプリ </title>
   <link rel='stylesheet' href='index.css'></link>
+  <script src='config.js' defer></script>
   <script src='auth.js' defer></script>
   <script src='handle_display.js' defer></script>
   <script src='send_report.js' defer></script>
@@ -69,9 +70,10 @@
             <option value='D'>保健所D</option>
             <option value='E'>保健所E</option>
           </select><div/>
-          <label >日付<input class='date' type='date'></input></label></br>
+          <label >日付</label><input class='date' type='date'></input></br>
           <label>感染者数</label><input class='number' type='number' min='0'></input></br>
           <button class='sendBtn'>送信</button>
+          <div class='message'></div>
         <div>
       </div>
     </div>

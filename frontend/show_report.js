@@ -1,6 +1,3 @@
-const public_page_element = document.querySelector('.public_page')
-const URL = 'http://127.0.0.1/api/report/?format=json'
-
 async function fetch_report(
   url
 ){
@@ -18,6 +15,7 @@ function drawMultSeries(
   //see  https://jsfiddle.net/api/post/library/pure/
   //https://developers.google.com/chart/interactive/docs/gallery/columnchart
 
+  const public_page_element = document.querySelector('.public_page')
   const chart_element = document.createElement('div');
   chart_element.setAttribute('class','chart_element')
   chart_element.setAttribute('id',id);

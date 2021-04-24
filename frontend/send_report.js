@@ -2,11 +2,56 @@
 //  fetch('api/report')
 //}
 
-const sendBtn_element=document.querySelector('.sendBtn')
-sendBtn_element.addEventListener('click',()=>{
+function get_report_data(){
   const health_center = document.querySelector('.health_center').value
   const date = document.querySelector('.date').value
   const infected_people = document.querySelector('.number').value
-  console.log(health_center,date,infected_people)
+  const report_data={
+    'health_center':health_center,
+    'date':date,
+    'number_infected':infected_people
+  }
+  return report_data;
+}
 
-})
+function validate(){
+  return 1;
+}
+
+async function send_report(url,report_data){
+  /*  report_data = {
+      'health_center':String,
+      'date':date,
+      'number_infected':Int
+      }
+  */
+
+　//djangoが受け付ける形式に変換する。本当はdjango側のモデルの定義を年月日で受け付けられるように直したい。
+  report_data.date=report_data.date+'T00:00:00+00:00'//djangoが受け付ける形式に変換する。本当はdjango側のモデルの定義を年月日で受け付けられるように直したい。
+
+  const param = {
+    method : 'POST',
+    headers : new Headers({'Content-Type': 'application/json','X-CSRFToken': 'gc9tXJa0PiXBAEOrkr7paX7CK3hgsu1yFVEKhSr3x3WcaFpre6gI48d8WpfIMbTg'}),
+    body:JSON.stringify(report_data)
+  }
+
+  await fetch(url,param)
+  .then(data=>{console.log('success',data)})
+  .catch((error)=>{console.log('error',error)})
+
+  document.querySelector('.message').innerHTML = '送信されました。'
+
+}
+
+function main(){
+  const sendBtn_element=document.querySelector('.sendBtn')
+  sendBtn_element.addEventListener('click',()=>{
+    report_data = get_report_data();
+    if(!validate()){
+      return 0;
+    }
+    send_report(URL,report_data);
+  })
+}
+
+main()
