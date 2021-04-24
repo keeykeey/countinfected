@@ -147,31 +147,16 @@ async function main(){
 
     google.charts.load('current', {packages: ['corechart', 'bar']});
     if(year_selected && month_selected){
-      if(input_data.A.length != 0){
-        google.charts.setOnLoadCallback(function(){
-          drawMultSeries('A保健所',input_data.A)
-        });
-      }
-      if(input_data.B.length != 0){
-        google.charts.setOnLoadCallback(function(){
-          drawMultSeries('B保健所',input_data.B)
-        });
-      }
-      if(input_data.C.length != 0){
-        google.charts.setOnLoadCallback(function(){
-          drawMultSeries('C保健所',input_data.C)
-        });
-      }
-      if(input_data.D.length != 0){
-        google.charts.setOnLoadCallback(function(){
-          drawMultSeries('D保健所',input_data.D)
-        });
-      }
-      if(input_data.E.length != 0){
-        google.charts.setOnLoadCallback(function(){
-          drawMultSeries('E保健所',input_data.E)
-        });
-      }
+      google.charts.setOnLoadCallback(function(){
+        drawMultSeries('A保健所',input_data.A)});
+      google.charts.setOnLoadCallback(function(){
+        drawMultSeries('B保健所',input_data.B)});
+      google.charts.setOnLoadCallback(function(){
+        drawMultSeries('C保健所',input_data.C)});
+      google.charts.setOnLoadCallback(function(){
+        drawMultSeries('D保健所',input_data.D)});
+      google.charts.setOnLoadCallback(function(){
+        drawMultSeries('E保健所',input_data.E)});
     }
   }))
 }
