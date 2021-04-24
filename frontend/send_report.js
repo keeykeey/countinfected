@@ -1,7 +1,3 @@
-//function send_report(url,param){
-//  fetch('api/report')
-//}
-
 function get_report_data(){
   const health_center = document.querySelector('.health_center').value
   const date = document.querySelector('.date').value
