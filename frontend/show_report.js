@@ -1,7 +1,5 @@
 const public_page_element = document.querySelector('.public_page')
 const URL = 'http://127.0.0.1/api/report/?format=json'
-const NUM_HEALTH_CENTER = 5
-const DAYS_TO_VISUALIZE = 9
 
 async function fetch_report(
   url
@@ -19,18 +17,13 @@ function drawMultSeries(
 ) {
   //see  https://jsfiddle.net/api/post/library/pure/
   //https://developers.google.com/chart/interactive/docs/gallery/columnchart
-  if(document.querySelectorAll('.chart_element')!==null){
-    console.log('exists')
-    document.querySelectorAll('.char_element').forEach(node=>node.remove())
-  }
-
 
   const chart_element = document.createElement('div');
   chart_element.setAttribute('class','chart_element')
   chart_element.setAttribute('id',id);
   public_page_element.appendChild(chart_element)
 
-  var data = new google.visualization.arrayToDataTable([
+  const data = new google.visualization.arrayToDataTable([
     ['day','感染者数'],
     ['1',input_data[0]],
     ['2',input_data[1]],
@@ -98,15 +91,17 @@ async function main(){
   //エンドポイントからjsonオブジェクトを取得
   const json_obj= await fetch_report(URL);
 
-  //forループでjsonの要素ごとにアクセスし、保健所ごとの時系列感染者データ配列を作成
-  const end = Object.keys(json_obj).length
-  const report_of_A = new Array()
-  const report_of_B = new Array()
-  const report_of_C = new Array()
-  const report_of_D = new Array()
-  const report_of_E = new Array()
   //JSONデータのうち、ユーザーが選択した年、月のデータをArrayに格納
   document.querySelectorAll('.ym_selector').forEach(node=>node.addEventListener('change',()=>{
+
+    //forループでjsonの要素ごとにアクセスし、保健所ごとの時系列感染者データ配列を作成
+    const end = Object.keys(json_obj).length
+    const report_of_A = new Array(30).fill(0)
+    const report_of_B = new Array(30).fill(0)
+    const report_of_C = new Array(30).fill(0)
+    const report_of_D = new Array(30).fill(0)
+    const report_of_E = new Array(30).fill(0)
+
     const year_selected = document.getElementById('yyyy').value//'2021';
     const month_selected = document.getElementById('mm').value//'04';
 
