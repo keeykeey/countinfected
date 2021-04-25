@@ -12,7 +12,7 @@ function get_report_data(){
 
 function validate(report_data){
   //report_data = {'health_center':String,'date':date,'number_infected':Int}
-  
+
   return 1;
 }
 
