@@ -10,24 +10,23 @@ function get_report_data(){
   return report_data;
 }
 
-function validate(){
+function validate(report_data){
+  //report_data = {'health_center':String,'date':date,'number_infected':Int}
+  
   return 1;
 }
 
 async function send_report(url,report_data){
-  /*  report_data = {
-      'health_center':String,
-      'date':date,
-      'number_infected':Int
-      }
-  */
+  //report_data = {'health_center':String,'date':date,'number_infected':Int}
 
 　//djangoが受け付ける形式に変換する。本当はdjango側のモデルの定義を年月日で受け付けられるように直したい。
-  report_data.date=report_data.date+'T00:00:00+00:00'//djangoが受け付ける形式に変換する。本当はdjango側のモデルの定義を年月日で受け付けられるように直したい。
+  report_data.date=report_data.date+'T00:00:00+00:00'
+  const cookies = document.cookie;
+  const csrftoken = get_value_from_cookies(cookies,'csrftoken');
 
   const param = {
     method : 'POST',
-    headers : new Headers({'Content-Type': 'application/json','X-CSRFToken': 'gc9tXJa0PiXBAEOrkr7paX7CK3hgsu1yFVEKhSr3x3WcaFpre6gI48d8WpfIMbTg'}),
+    headers : new Headers({'Content-Type': 'application/json','X-CSRFToken': csrftoken}),
     body:JSON.stringify(report_data)
   }
 
@@ -43,7 +42,7 @@ function main(){
   const sendBtn_element=document.querySelector('.sendBtn')
   sendBtn_element.addEventListener('click',()=>{
     report_data = get_report_data();
-    if(!validate()){
+    if(!validate(report_data)){
       return 0;
     }
     send_report(URL,report_data);

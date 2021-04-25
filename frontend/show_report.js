@@ -117,19 +117,19 @@ async function main(){
       ){
         switch(json_obj[i]["health_center"]){
           case "A":
-            report_of_A[day_in_array]=(json_obj[i]["number_infected"])
+            report_of_A[day_in_array-1]=(json_obj[i]["number_infected"])
             break
           case "B":
-            report_of_B[day_in_array]=(json_obj[i]["number_infected"])
+            report_of_B[day_in_array-1]=(json_obj[i]["number_infected"])
             break
           case "C":
-            report_of_C[day_in_array]=(json_obj[i]["number_infected"])
+            report_of_C[day_in_array-1]=(json_obj[i]["number_infected"])
             break
           case "D":
-            report_of_D[day_in_array]=(json_obj[i]["number_infected"])
+            report_of_D[day_in_array-1]=(json_obj[i]["number_infected"])
             break
           case "E":
-            report_of_E[day_in_array]=(json_obj[i]["number_infected"])
+            report_of_E[day_in_array-1]=(json_obj[i]["number_infected"])
             break
         }
       }
