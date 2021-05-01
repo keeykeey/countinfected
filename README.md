@@ -6,7 +6,3 @@
   <li>#inside container</li>
   <li>$python3 manage.py createsuperuser</li>
 <ul>
-
-''':sh
-
-'''
