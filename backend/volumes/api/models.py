@@ -1,5 +1,4 @@
 from django.db import models
-
 from django.utils import timezone
 
 class Report(models.Model):
@@ -15,8 +14,14 @@ class Report(models.Model):
         choices=health_center_options,
         blank = True,
     )
-    date = models.DateTimeField(default=timezone.datetime.today())
+    date = models.DateTimeField()
     number_infected = models.IntegerField()
 
     def __str__(self):
         return str(self.pk)
+
+from django.contrib.auth.models import AbstractUser
+
+class CustomUser(AbstractUser):
+    def __str__(self):
+        return self.username
