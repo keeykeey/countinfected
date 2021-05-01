@@ -1,4 +1,4 @@
-function get_value_from_cookies(cookies,search_by_this_key){
+function getValueFromCookies(cookies,search_by_this_key){
   const cookieItems = cookies.split(';');
   const obj = [];
   cookieItems.forEach((item)=>{

@@ -12,7 +12,6 @@ function get_report_data(){
 
 function validate(report_data){
   //report_data = {'health_center':String,'date':date,'number_infected':Int}
-
   return 1;
 }
 
@@ -22,7 +21,7 @@ async function send_report(url,report_data){
 　//djangoが受け付ける形式に変換する。本当はdjango側のモデルの定義を年月日で受け付けられるように直したい。
   report_data.date=report_data.date+'T00:00:00+00:00'
   const cookies = document.cookie;
-  const csrftoken = get_value_from_cookies(cookies,'csrftoken');
+  const csrftoken = getValueFromCookies(cookies,'csrftoken');
 
   const param = {
     method : 'POST',
@@ -31,10 +30,14 @@ async function send_report(url,report_data){
   }
 
   await fetch(url,param)
-  .then(data=>{console.log('success',data)})
+  .then(data=>{
+    if(data.status===401){
+      document.querySelector('.message').innerHTML = '送信されました。'
+    }else(
+      document.querySelector('.message').innerHTML = '送信できませんでした。'
+    )
+  })
   .catch((error)=>{console.log('error',error)})
-
-  document.querySelector('.message').innerHTML = '送信されました。'
 
 }
 
