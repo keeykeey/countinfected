@@ -7,7 +7,7 @@
   <li>$python3 manage.py createsuperuser</li>
 </ul>
 
-<h2>1 How to run google cloud SDK</h2>
+<h2>2 How to run google cloud SDK</h2>
 <ul>
   <li># 'google' is a container name defined in docker-compose.yml<li>
   <li>$docker-compose run google bash<li>
