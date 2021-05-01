@@ -3,10 +3,10 @@ version: "3.7"
 services:
   google:
     build:
-      context: ./gcp
+      context: .
       dockerfile: DockerfileGcp
     volumes:
-      - ./gcp/volumes:/googleCloudSdk
+      - ./gcp:/googleCloudSdk
 
   db:
     image: postgres
@@ -19,10 +19,10 @@ services:
 
   backend:
     build:
-      context: ./backend
+      context: ./app/backend
       dockerfile: DockerfileBackend
     volumes:
-      - ./backend/volumes:/dockerBackend
+      - ./app/backend/volumes:/dockerBackend
       - staticfiles:/dockerBackend/staticfiles
     ports:
       - "8000:8000"
@@ -31,13 +31,13 @@ services:
 
   nginx:
     build:
-      context: ./nginx
+      context: ./app/nginx
       dockerfile: DockerfileNginx
     ports:
       - "80:80"
     volumes:
-      - ./frontend:/usr/share/nginx/html
-      - ./nginx/conf:/etc/nginx/conf.d
+      - ./app/frontend:/usr/share/nginx/html
+      - ./app/nginx/conf:/etc/nginx/conf.d
       - staticfiles:/staticfiles
     depends_on:
       - backend
