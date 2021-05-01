@@ -5,7 +5,7 @@
   <li>$docker run -it CONTAINER_NAME bash</li>
   <li>#inside container</li>
   <li>$python3 manage.py createsuperuser</li>
-<ul>
+</ul>
 
 <h2>1 How to run google cloud SDK</h2>
 <ul>
