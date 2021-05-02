@@ -31,7 +31,8 @@ async function send_report(url,report_data){
 
   await fetch(url,param)
   .then(data=>{
-    if(data.status===401){
+    console.log(data)
+    if(data.status===201){
       document.querySelector('.message').innerHTML = '送信されました。'
     }else(
       document.querySelector('.message').innerHTML = '送信できませんでした。'
