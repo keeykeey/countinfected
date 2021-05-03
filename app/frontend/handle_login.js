@@ -46,7 +46,7 @@ function tokenLogout(){
 }
 
 //1秒毎にログイン状態を確認し,ログインしていたら引数として与えた関数を実行
-function listenTokenChange(whileLogined,yetToLogin,interval = 1000) {
+function listenTokenChange(whileLogined,yetToLogin,interval = 500) {
   setInterval(()=> {
     //var cookie = document.cookie;
     const access_token=getValueFromCookies(document.cookie,'access_token')
