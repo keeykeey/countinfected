@@ -34,6 +34,7 @@ function tokenAuthentication(){
   })
   .catch((error)=>{
     console.log('fetch function failed...',error);
+    //ログイン失敗時に画面にメッセージを表示するのは、handle_login.jsで書きたかった...
     const btn = document.querySelector('#loginBtnMessage')
     btn.innerHTML = 'ログイン失敗'
     return 0;

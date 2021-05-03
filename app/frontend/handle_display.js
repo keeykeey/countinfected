@@ -24,6 +24,16 @@ function yetToLogin(){
   to_login_Btn.classList.toggle('is_hiding',false);
   to_logout_Btn.classList.toggle('is_hiding',true);
 
+  //content
+  const contents_element = document.querySelector('.contents_title');
+  const public_page = document.querySelector('.public_page');
+  const reporting_page = document.querySelector('.reporting_page');
+  const admin_page = document.querySelector('.admin_page');
+  public_page.classList.toggle('is_hiding',false);
+  reporting_page.classList.toggle('is_hiding',true);
+  admin_page.classList.toggle('is_hiding',true);
+  contents_element.innerHTML='表示年月を選択';
+
   return 0
 }
 
