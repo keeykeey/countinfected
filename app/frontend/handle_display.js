@@ -160,6 +160,7 @@ function displayAuthModalWindow(){
   <label><label><input id='name_input' placeholder='name'></input><br/>
   <label><label><input id='password_input' placeholder='password'></input><br/>
   <label></label><button class='loginBtn'>Login</button><br/>
+  <label></label><div class='message' id='loginBtnMessage'></div>
   `;
 
   //モーダルウインドウ、その中身を表示できるようにする。

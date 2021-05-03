@@ -30,10 +30,14 @@ function tokenAuthentication(){
   .then(
     res=>{
       document.cookie='access_token='+res.token//access_token => put into cookie
-      console.log('success',res)
       return 1;
   })
-  .catch((error)=>{console.log('fetch function failed...',error);return 0;})
+  .catch((error)=>{
+    console.log('fetch function failed...',error);
+    const btn = document.querySelector('#loginBtnMessage')
+    btn.innerHTML = 'ログイン失敗'
+    return 0;
+  })
 }
 
 function tokenLogout(){
