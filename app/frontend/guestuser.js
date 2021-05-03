@@ -2,7 +2,7 @@ function guestuser(){
   const sidebar = document.querySelector('.sidebar')
   const guestLoginBtn = document.createElement('button')
   guestLoginBtn.classList.add('switch_content')
-  guestLoginBtn.innerText='Guest Login'
+  guestLoginBtn.innerHTML='<u>Guest Login</u>'
   guestLoginBtn.addEventListener('click',()=>{
     guestLogin('testuser1','pwofguest1')
   })
