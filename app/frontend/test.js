@@ -8,7 +8,7 @@ function test(){
   testIfTokenUrlHttps()
   testIfCookieIsCorrectlyGreped()
   console.log('-------------------')
-  console.log('test resulg...')
+  console.log('test result...')
   console.log('success case :',right)
   console.log('failed case:',wrong)
   console.log('percentage :',right/(right + wrong))
