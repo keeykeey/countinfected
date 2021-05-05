@@ -89,9 +89,13 @@ async function main(){
   //エンドポイントからjsonオブジェクトを取得
   const json_obj= await fetch_report(URL);
 
-  //JSONデータのうち、ユーザーが選択した年、月のデータをArrayに格納
-  document.querySelectorAll('.ym_selector').forEach(node=>node.addEventListener('change',()=>{
+  //年・月を選択した時、又は画面をリサイズした時にグラフを表示・更新する。
+  document.querySelectorAll('.ym_selector').forEach(node=>node.addEventListener('change',showReport))
+  window.addEventListener('resize',()=>{
+    setTimeout(showReport,1000)
+  })
 
+  function showReport(){
     //forループでjsonの要素ごとにアクセスし、保健所ごとの時系列感染者データ配列を作成
     const end = Object.keys(json_obj).length
     const report_of_A = new Array(30).fill(0)
@@ -107,6 +111,7 @@ async function main(){
       return 0;//年、月どちらかが選択されていなければ終了
     }
 
+    //JSONデータのうち、ユーザーが選択した年、月のデータをArrayに格納
     for(var i=0;i<end;i++){
       const year_in_array = String(json_obj[i]['date'].slice(0,4));
       const month_in_array = String(json_obj[i]['date'].slice(5,7));
@@ -156,7 +161,7 @@ async function main(){
       google.charts.setOnLoadCallback(function(){
         drawMultSeries('E保健所',input_data.E)});
     }
-  }))
+  }
 }
 
 main()

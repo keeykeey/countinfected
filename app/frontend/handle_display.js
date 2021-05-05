@@ -72,7 +72,8 @@ loadWindow()
 //handle window size change
 function handleWindowSizeChange(){
   const menu_icon = document.querySelector('.menu')
-  const sidebar_and_contents_element=document.querySelector('.row')
+  //const sidebar_and_contents_element=document.querySelector('.row')
+  //console.log('size',sidebar_and_contents_element.clientWidth)
 
   //ウインドウサイズが小さくなる時に必要な挙動なので、handleWindowSizeChange関数内に記述した。
   menu_icon.addEventListener('click',()=>{
@@ -80,13 +81,18 @@ function handleWindowSizeChange(){
   })
 
   //ウインドウサイズに応じてsidebar と　menuアイコン　の表示非表示切り替え
+  //どういう時に何が表示になるか、非表示になるかのロジックが読み取りにくいかもしれない。書き方改善できるかもしれない。
   const sidebar_element = document.querySelector('.sidebar');
   window.addEventListener('resize',()=>{
-    menu_icon.classList.toggle('is_hiding',window.innerWidth>=420)
+    menu_icon.classList.toggle('is_hiding',window.innerWidth>=420);
     sidebar_element.classList.toggle('is_hiding',window.innerWidth<420);
+    if(sidebar_element.clientWidth<120){
+      sidebar_element.classList.toggle('is_hiding',true)
+      menu_icon.classList.toggle('is_hiding',false)
+    }
   })
 
-  //ページロード時のメニューバーの表示非表示を取り扱う。
+  //リサイズ時だけではなく、ページロード時においてもメニューバーの表示非表示を取り扱う。
   menu_icon.classList.toggle('is_hiding',window.innerWidth>=420)
 }
 
