@@ -168,7 +168,7 @@ function displayAuthModalWindow(){
   innerElement.innerHTML = `
   <p>ログイン画面</p>
   <label><label><input id='name_input' placeholder='name'></input><br/>
-  <label><label><input id='password_input' placeholder='password'></input><br/>
+  <label><label><input type='password' id='password_input' placeholder='password'></input><br/>
   <label></label><button class='loginBtn'>Login</button>
   <div class='message' id='loginBtnMessage'></div>
   `;
@@ -176,6 +176,7 @@ function displayAuthModalWindow(){
   //モーダルウインドウ、その中身を表示できるようにする。
   modalElement.appendChild(innerElement);
   document.body.appendChild(modalElement);
+  improveInputUI()
 
   //モーダルウィンドウ内部の機能を実装,ログイン
   const login_button_element = document.querySelector('.loginBtn')
@@ -197,5 +198,47 @@ function displayAuthModalWindow(){
   modalElement.addEventListener('click',()=>{
     document.body.removeChild(modalElement);
   })
-
 }
+
+function improveInputUI(message){
+  const inputEl =document.querySelectorAll('input')
+
+  inputEl.forEach(node=>node.addEventListener('keydown',(event)=>{
+    const inputed_char = node.value
+    const key_code = String(event.code)
+    //入力する文字(node.value.slice(-1))は、setTimeout関数の中で、時間差でputting_charに代入しないと、nullが代入されてしまう。
+    setTimeout(()=>{
+      const putting_char = node.value.slice(-1)
+      switch(key_code.slice(0,3)){
+        case 'Ent'://'enter'
+          break
+        case 'Esc'://'escape'
+          break
+        case 'Tab':
+          break
+        case 'Cap'://'caps lock'
+          break
+        case 'Shi'://'shift'
+          break
+        case 'Con'://'control'
+          break
+        case 'Alt'://'option'
+          break
+        case 'Met'://'command'
+          break
+        case 'Arr'://'Arrow(left, right, up, or down)'
+
+        case 'Bac'://'backspace' or 'delete' button
+          if (key_code ==='backspace'){
+            return 0;//node.value = inputed_char.slice(0,-1)等と処理を書かなくても、デフォルトで文字がバックされる。
+          }else if(key_code === 'backquote'){
+            node.value = inputed_char + putting_char
+          }
+          break
+        default :
+          node.value = inputed_char + putting_char
+      }
+    },50)
+  }))
+}
+improveInputUI()
